@@ -603,6 +603,11 @@ def publish(digest_path: str = None):
         digest_path = os.path.join(root, "output", "digest.json")
 
     # 读取摘要
+    if not os.path.exists(digest_path):
+        print(f"[!] 找不到 {digest_path}")
+        print("    原因：pipeline.py 尚未运行，或上一步执行失败，digest.json 未生成")
+        print("    解决：先运行 python pipeline.py，再运行本脚本")
+        return
     print(f"读取：{digest_path}")
     with open(digest_path, encoding="utf-8") as f:
         data = json.load(f)

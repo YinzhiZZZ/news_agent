@@ -26,7 +26,10 @@ jobs:
       - name: Run pipeline (fetch → scrape → summarize)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
-        run: PYTHONIOENCODING=utf-8 python pipeline.py
+        run: |
+          PYTHONIOENCODING=utf-8 python pipeline.py
+          echo "=== output 目录内容 ==="
+          ls -la output/ || echo "output 目录不存在"
 
       - name: Run publisher (generate HTML + send email)
         env:
