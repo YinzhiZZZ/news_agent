@@ -17,7 +17,7 @@ from config import USER_PROFILE
 from collector.scrape_web import enrich_with_fulltext
 
 load_dotenv()
-client = anthropic.Anthropic()
+client = anthropic.Anthropic(timeout=30.0)
 
 
 def summarize_article(article: dict) -> dict:
@@ -59,13 +59,24 @@ def summarize_article(article: dict) -> dict:
   "summary": "3-5句话，必须包含：①核心事件及背景是什么 ②涉及的具体数字、产品名或公司名 ③对{domain_name}领域的实际影响。禁止使用'该文章介绍了'等套话，直接陈述事实。"
 }}"""
 
-    try:
-        response = client.messages.create(
-            model="claude-haiku-4-5-20251001",
-            max_tokens=800,
-            messages=[{"role": "user", "content": prompt}]
-        )
+    max_retries = 3
+    for attempt in range(1, max_retries + 1):
+        try:
+            response = client.messages.create(
+                model="claude-haiku-4-5-20251001",
+                max_tokens=800,
+                messages=[{"role": "user", "content": prompt}]
+            )
+            break
+        except Exception as e:
+            if attempt < max_retries:
+                print(f"    [!] API 连接失败（第 {attempt} 次），5 秒后重试：{e}")
+                time.sleep(5)
+            else:
+                print(f"    ✗ API 调用失败，已重试 {max_retries} 次：{e}")
+                return None
 
+    try:
         raw_text = response.content[0].text.strip()
         if raw_text.startswith("```"):
             raw_text = raw_text.split("```")[1]
@@ -107,9 +118,6 @@ def summarize_article(article: dict) -> dict:
             "summary":        content_to_use[:300],
         }
 
-    except Exception as e:
-        print(f"    ✗ API 调用失败：{e}")
-        return None
 
 
 def summarize_all(articles: list[dict], delay_seconds: float = 0.3) -> list[dict]:

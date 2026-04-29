@@ -7,6 +7,9 @@ from datetime import datetime
 
 os.makedirs("output", exist_ok=True)
 
+if not os.getenv("ANTHROPIC_API_KEY"):
+    raise EnvironmentError("ANTHROPIC_API_KEY 未设置，请在 .env 或环境变量中配置后重试")
+
 from collector.fetch_rss import fetch_all_sources
 from collector.scrape_web import enrich_with_fulltext
 from processor.summarize import summarize_all
