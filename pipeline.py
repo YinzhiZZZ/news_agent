@@ -16,7 +16,9 @@ print("已启动 IPv4 强制模式...")
 import os
 import json
 from datetime import datetime
+from dotenv import load_dotenv
 
+load_dotenv()
 os.makedirs("output", exist_ok=True)
 
 if not os.getenv("ANTHROPIC_API_KEY"):
