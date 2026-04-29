@@ -8,7 +8,8 @@ import sys
 orig_getaddrinfo = socket.getaddrinfo
 def patched_getaddrinfo(*args, **kwargs):
     responses = orig_getaddrinfo(*args, **kwargs)
-    return [res for res in responses if res[0] == socket.AF_INET]
+    ipv4 = [res for res in responses if res[0] == socket.AF_INET]
+    return ipv4 if ipv4 else responses  # 无 IPv4 时回退，避免 GitHub Actions 上 connection error
 socket.getaddrinfo = patched_getaddrinfo
 
 print("已启动 IPv4 强制模式...")
