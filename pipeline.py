@@ -5,6 +5,8 @@ import os
 import json
 from datetime import datetime
 
+os.makedirs("output", exist_ok=True)
+
 from collector.fetch_rss import fetch_all_sources
 from collector.scrape_web import enrich_with_fulltext
 from processor.summarize import summarize_all
