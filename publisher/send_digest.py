@@ -614,7 +614,7 @@ def publish(digest_path: str = None):
     print(f"配额筛选后：{len(articles)} 篇\n")
 
     date_str     = date.today().strftime("%Y-%m-%d")
-    pages_url    = os.getenv("GITHUB_PAGES_URL", "")
+    pages_url    = os.getenv("PAGES_URL", "")
     html_filename = f"digest_{date_str}.html"
     html_path     = os.path.join(root, "output", html_filename)
 

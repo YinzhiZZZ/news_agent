@@ -34,7 +34,7 @@ jobs:
           GMAIL_SENDER:      ${{ secrets.GMAIL_SENDER }}
           GMAIL_RECIPIENT:   ${{ secrets.GMAIL_RECIPIENT }}
           GMAIL_APP_PASSWORD: ${{ secrets.GMAIL_APP_PASSWORD }}
-          GITHUB_PAGES_URL:  ${{ secrets.GITHUB_PAGES_URL }}
+          PAGES_URL:         ${{ secrets.PAGES_URL }}
         run: PYTHONIOENCODING=utf-8 python publisher/send_digest.py
 
       - name: Commit docs/index.html back to repo
