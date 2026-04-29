@@ -27,6 +27,7 @@ jobs:
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
+          python -c "import os; key=os.environ.get('ANTHROPIC_API_KEY','MISSING'); print(f'API Key status: {key[:8]}...' if key!='MISSING' else 'API KEY IS MISSING')"
           PYTHONIOENCODING=utf-8 python pipeline.py
           echo "=== output 目录内容 ==="
           ls -la output/ || echo "output 目录不存在"
