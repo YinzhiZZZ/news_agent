@@ -618,27 +618,37 @@ def publish(digest_path: str = None):
     html_filename = f"digest_{date_str}.html"
     html_path     = os.path.join(root, "output", html_filename)
 
-    # 生成并保存网页
+    # 生成 HTML
     page_html = build_html_page(articles, date_str, pages_url)
+
+    # 保存带日期的归档版本
     with open(html_path, "w", encoding="utf-8") as f:
         f.write(page_html)
     print(f"网页已生成 → {html_path}")
 
+    # 同时写入 docs/index.html（GitHub Pages 入口）
+    docs_path = os.path.join(root, "docs", "index.html")
+    os.makedirs(os.path.dirname(docs_path), exist_ok=True)
+    with open(docs_path, "w", encoding="utf-8") as f:
+        f.write(page_html)
+    print(f"GitHub Pages → {docs_path}")
+
     # 构建 GitHub Pages 完整 URL（供邮件链接使用）
     if pages_url:
-        full_page_url = f"{pages_url.rstrip('/')}/{html_filename}"
+        full_page_url = pages_url.rstrip("/")
     else:
         full_page_url = f"file:///{html_path.replace(os.sep, '/')}"
         print(f"[提示] 未设置 GITHUB_PAGES_URL，邮件链接将使用本地路径")
 
     # 生成并发送邮件
     email_html = build_email_html(articles, date_str, full_page_url)
-    subject    = f"📰 每日资讯摘要 {date_str}（{len(articles)} 篇）"
+    subject    = f"每日资讯摘要 {date_str}（{len(articles)} 篇）"
     send_email(subject, email_html)
 
     # 终端预览
     print(f"\n预览路径：")
-    print(f"  网页版：{html_path}")
+    print(f"  归档版：{html_path}")
+    print(f"  Pages : {docs_path}")
     if pages_url:
         print(f"  线上版：{full_page_url}")
 

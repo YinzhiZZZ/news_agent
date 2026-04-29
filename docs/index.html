@@ -1,0 +1,297 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>每日资讯摘要 2026-04-29</title>
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  body {
+    background: #06070d;
+    color: #c8d0e0;
+    font-family: -apple-system, BlinkMacSystemFont, "Segoe UI",
+                 "PingFang SC", "Hiragino Sans GB", "Noto Sans SC", sans-serif;
+    min-height: 100vh;
+    /* 细网格背景 */
+    background-image:
+      linear-gradient(rgba(255,255,255,.025) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,.025) 1px, transparent 1px);
+    background-size: 40px 40px;
+  }
+
+  .container {
+    max-width: 780px;
+    margin: 0 auto;
+    padding: 40px 16px 64px;
+  }
+
+  /* ── Header ── */
+  .site-header {
+    text-align: center;
+    padding: 48px 0 40px;
+    position: relative;
+  }
+  .site-header::after {
+    content: '';
+    display: block;
+    width: 120px;
+    height: 1px;
+    background: linear-gradient(90deg, transparent, #00d4ff88, transparent);
+    margin: 24px auto 0;
+  }
+  .site-title {
+    font-size: clamp(22px, 5vw, 32px);
+    font-weight: 900;
+    letter-spacing: .04em;
+    background: linear-gradient(90deg, #00d4ff, #a78bfa, #00d4ff);
+    background-size: 200%;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+    animation: shimmer 4s linear infinite;
+  }
+  @keyframes shimmer {
+    0%   { background-position: 0% }
+    100% { background-position: 200% }
+  }
+  .site-sub {
+    margin-top: 10px;
+    font-size: 13px;
+    color: #4a5568;
+    font-family: monospace;
+    letter-spacing: .08em;
+  }
+  .quota-row {
+    margin-top: 12px;
+    font-size: 12px;
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    flex-wrap: wrap;
+  }
+
+  /* ── Card ── */
+  .card {
+    border-radius: 14px;
+    padding: 24px 26px 20px;
+    margin-bottom: 20px;
+    position: relative;
+    overflow: hidden;
+    transition: transform .22s ease, box-shadow .22s ease, border-color .22s ease;
+    cursor: default;
+  }
+  .card::before {
+    content: '';
+    position: absolute;
+    inset: 0;
+    border-radius: inherit;
+    opacity: 0;
+    background: radial-gradient(600px circle at var(--mx,50%) var(--my,50%),
+                  var(--glow) 0%, transparent 65%);
+    transition: opacity .3s;
+    pointer-events: none;
+  }
+  .card:hover {
+    transform: translateY(-3px);
+    box-shadow: 0 0 28px var(--glow), 0 8px 24px rgba(0,0,0,.5);
+    border-color: var(--clr) !important;
+  }
+  .card:hover::before { opacity: 1; }
+
+  .card-meta {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    margin-bottom: 12px;
+  }
+
+  .domain-badge {
+    font-size: 11px;
+    font-weight: 700;
+    padding: 3px 10px;
+    border-radius: 20px;
+    letter-spacing: .04em;
+    text-transform: uppercase;
+  }
+
+  .card-title {
+    font-size: clamp(15px, 2.5vw, 18px);
+    font-weight: 700;
+    line-height: 1.45;
+    margin-bottom: 10px;
+  }
+  .card-title a {
+    text-decoration: none;
+    transition: color .15s;
+  }
+  .card-title a:hover { color: var(--clr) !important; }
+
+  /* ── Tags ── */
+  .tags {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 6px;
+    margin-bottom: 14px;
+  }
+  .tag {
+    font-size: 11px;
+    padding: 2px 9px;
+    border-radius: 20px;
+    letter-spacing: .02em;
+  }
+
+  /* ── Refs ── */
+  .refs {
+    margin-top: 14px;
+    padding-top: 12px;
+    border-top: 1px solid rgba(255,255,255,.06);
+  }
+
+  /* ── Footer ── */
+  .site-footer {
+    text-align: center;
+    padding: 24px 0;
+    font-size: 11px;
+    color: #2a3040;
+    font-family: monospace;
+    letter-spacing: .06em;
+  }
+
+  /* ── Responsive ── */
+  @media (max-width: 600px) {
+    .card { padding: 18px 16px 16px; }
+    .card-title { font-size: 15px; }
+  }
+</style>
+</head>
+<body>
+<div class="container">
+
+  <header class="site-header">
+    <h1 class="site-title">// 每日资讯摘要</h1>
+    <p class="site-sub">DAILY DIGEST &nbsp;·&nbsp; 2026-04-29 &nbsp;·&nbsp; 3 ARTICLES</p>
+    <div class="quota-row"><span style="color:#00d4ff;">AI 与技术 3</span>  <span style="color:#94a3b8;">商业与互联网 3</span>  <span style="color:#4ade80;">摄影 1</span>  <span style="color:#fbbf24;">旅游与地理 1</span></div>
+  </header>
+
+  
+    <article id="article-0" class="card" style="
+        --clr:#00d4ff;--glow:rgba(0,212,255,0.35);
+        background:linear-gradient(135deg,#0d1117 0%,#0a0f1e 100%);
+        border:1px solid #00d4ff22;
+        border-top:2px solid #00d4ff;">
+      <div class="card-meta">
+        <span class="domain-badge" style="
+            background:rgba(0,212,255,0.12);color:#00d4ff;
+            border:1px solid #00d4ff55;">
+          ⬡ AI 与技术
+        </span>
+        <span style="color:#4a9eba;font-size:12px;">
+          OpenAI Blog &nbsp;·&nbsp; 2026-04-28 00:00
+        </span>
+      </div>
+
+      <h2 class="card-title">
+        <a href="https://openai.com/index/openai-on-aws" target="_blank"
+           style="color:#f0f4ff;">OpenAI模型与服务在AWS平台的集成上线</a>
+      </h2>
+
+      <div style="font-size:12px;margin-bottom:12px;color:#4a9eba;">
+        作者：<span style="color:#00d4ff;">未署名</span>
+      </div>
+
+      <div class="tags"><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">大语言模型</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">云计算服务</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">企业AI应用</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">代码生成工具</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">托管代理服务</span></div>
+
+      <p style="margin:0 0 0;font-size:14px;color:#c9e8f0;
+          line-height:1.85;">OpenAI的GPT模型、Codex代码生成工具和Managed Agents托管代理服务现已在Amazon Web Services平台上线。这一集成使企业能够在其AWS环境中构建和部署安全的AI应用。此举将OpenAI的先进AI能力与AWS的基础设施相结合，为企业用户提供了在自有云环境中使用尖端AI技术的新途径，有助于降低企业采纳生成式AI的部署难度和安全风险。</p>
+
+      
+      
+    </article>
+
+    <article id="article-1" class="card" style="
+        --clr:#00d4ff;--glow:rgba(0,212,255,0.35);
+        background:linear-gradient(135deg,#0d1117 0%,#0a0f1e 100%);
+        border:1px solid #00d4ff22;
+        border-top:2px solid #00d4ff;">
+      <div class="card-meta">
+        <span class="domain-badge" style="
+            background:rgba(0,212,255,0.12);color:#00d4ff;
+            border:1px solid #00d4ff55;">
+          ⬡ AI 与技术
+        </span>
+        <span style="color:#4a9eba;font-size:12px;">
+          OpenAI Blog &nbsp;·&nbsp; 2026-04-27 14:00
+        </span>
+      </div>
+
+      <h2 class="card-title">
+        <a href="https://openai.com/index/openai-available-at-fedramp-moderate" target="_blank"
+           style="color:#f0f4ff;">OpenAI 获得 FedRAMP Moderate 授权认证</a>
+      </h2>
+
+      <div style="font-size:12px;margin-bottom:12px;color:#4a9eba;">
+        作者：<span style="color:#00d4ff;">未署名</span>
+      </div>
+
+      <div class="tags"><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">联邦政府合规</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">ChatGPT Enterprise</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">OpenAI API</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">信息安全认证</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">公共部门 AI 应用</span></div>
+
+      <p style="margin:0 0 0;font-size:14px;color:#c9e8f0;
+          line-height:1.85;">OpenAI 的 ChatGPT Enterprise 和 OpenAI API 已获得 FedRAMP Moderate 级别授权，这是美国联邦政府对云服务安全性和合规性的重要认证标准。该授权使美国联邦机构能够在满足严格安全要求的前提下安全地采用 OpenAI 的 AI 技术。这一认证突破加速了生成式 AI 在政府部门的合规落地，扩大了 OpenAI 在公共部门的应用范围，同时为其他 AI 企业进入政府市场树立了合规参考。</p>
+
+      
+      
+    </article>
+
+    <article id="article-2" class="card" style="
+        --clr:#00d4ff;--glow:rgba(0,212,255,0.35);
+        background:linear-gradient(135deg,#0d1117 0%,#0a0f1e 100%);
+        border:1px solid #00d4ff22;
+        border-top:2px solid #00d4ff;">
+      <div class="card-meta">
+        <span class="domain-badge" style="
+            background:rgba(0,212,255,0.12);color:#00d4ff;
+            border:1px solid #00d4ff55;">
+          ⬡ AI 与技术
+        </span>
+        <span style="color:#4a9eba;font-size:12px;">
+          OpenAI Blog &nbsp;·&nbsp; 2026-04-27 06:00
+        </span>
+      </div>
+
+      <h2 class="card-title">
+        <a href="https://openai.com/index/next-phase-of-microsoft-partnership" target="_blank"
+           style="color:#f0f4ff;">OpenAI与微软合作协议更新</a>
+      </h2>
+
+      <div style="font-size:12px;margin-bottom:12px;color:#4a9eba;">
+        作者：<span style="color:#00d4ff;">未署名</span>
+      </div>
+
+      <div class="tags"><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">战略合作</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">大型语言模型</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">AI创新</span><span class="tag" style="background:rgba(0,212,255,0.12);color:#00d4ff;border:1px solid #00d4ff33;">长期合作框架</span></div>
+
+      <p style="margin:0 0 0;font-size:14px;color:#c9e8f0;
+          line-height:1.85;">OpenAI与微软宣布修订合作协议，通过简化合作条款为双方提供长期战略清晰度。该协议调整旨在支持双方继续在AI创新领域的规模化发展。此举标志着两家科技巨头深化合作关系，为大规模AI技术研发和商业化应用奠定制度基础，有助于加速生成式AI在企业和消费者领域的实际落地应用。</p>
+
+      
+      
+    </article>
+
+  <footer class="site-footer">
+    GENERATED BY NEWS_AGENT &nbsp;·&nbsp; 2026-04-29
+  </footer>
+
+</div>
+<script>
+  // 鼠标跟踪：让每张卡片的光晕跟随鼠标
+  document.querySelectorAll('.card').forEach(card => {
+    card.addEventListener('mousemove', e => {
+      const r = card.getBoundingClientRect();
+      card.style.setProperty('--mx', (e.clientX - r.left) + 'px');
+      card.style.setProperty('--my', (e.clientY - r.top)  + 'px');
+    });
+  });
+</script>
+</body>
+</html>

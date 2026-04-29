@@ -3,7 +3,12 @@
     "allow": [
       "Bash(cd /c/Users/17515/news_agent && PYTHONIOENCODING=utf-8 news_env/Scripts/python.exe publisher/send_digest.py 2>&1)",
       "Bash(cd /c/Users/17515/news_agent && PYTHONIOENCODING=utf-8 news_env/Scripts/python.exe -c \"\nimport json\nwith open\\('output/digest.json', encoding='utf-8'\\) as f:\n    data = json.load\\(f\\)\nfor a in data['articles']:\n    print\\(a['domain'], '|', a.get\\('main_topic',''\\)[:30]\\)\n\" 2>&1)",
-      "Bash(start:*)"
+      "Bash(start:*)",
+      "Bash(cd /c/Users/17515/news_agent && git rm -r --cached __pycache__/ output/ 2>&1 && git status --short 2>&1)",
+      "Bash(cd /c/Users/17515/news_agent && git rm -r --cached .env collector/__pycache__/ processor/__pycache__/ 2>&1)",
+      "Bash(cd /c/Users/17515/news_agent && git add .gitignore && git status --short 2>&1)",
+      "Bash(ls:*)",
+      "Bash(grep:*)"
     ]
   }
 }
