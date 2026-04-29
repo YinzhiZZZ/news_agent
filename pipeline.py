@@ -20,6 +20,11 @@ from datetime import datetime
 from dotenv import load_dotenv
 
 load_dotenv()
+
+# 去除 API Key 首尾空白/换行，避免 GitHub Secret 粘贴时带入 \n 导致 HTTP header 报错
+if os.environ.get("ANTHROPIC_API_KEY"):
+    os.environ["ANTHROPIC_API_KEY"] = os.environ["ANTHROPIC_API_KEY"].strip()
+
 os.makedirs("output", exist_ok=True)
 
 if not os.getenv("ANTHROPIC_API_KEY"):
