@@ -1,6 +1,18 @@
 # pipeline.py
 # 完整流程入口：采集 -> 全文抓取 -> 摘要 -> 保存
 
+import socket
+import sys
+
+# 强制 Python 的网络库使用 IPv4，避免在美国某些网络环境下 IPv6 路由不通的问题
+orig_getaddrinfo = socket.getaddrinfo
+def patched_getaddrinfo(*args, **kwargs):
+    responses = orig_getaddrinfo(*args, **kwargs)
+    return [res for res in responses if res[0] == socket.AF_INET]
+socket.getaddrinfo = patched_getaddrinfo
+
+print("已启动 IPv4 强制模式...")
+
 import os
 import json
 from datetime import datetime
