@@ -23,11 +23,31 @@ jobs:
       - name: Install dependencies
         run: pip install -r requirements.txt
 
+      - name: Test Anthropic API connectivity
+        env:
+          ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
+        run: |
+          python -c "
+          import os, anthropic
+          key = os.environ.get('ANTHROPIC_API_KEY', 'MISSING')
+          print(f'Key prefix: {key[:8]}...' if key != 'MISSING' else 'KEY MISSING')
+          client = anthropic.Anthropic()
+          try:
+              r = client.messages.create(
+                  model='claude-haiku-4-5-20251001',
+                  max_tokens=10,
+                  messages=[{'role':'user','content':'hi'}]
+              )
+              print('API OK:', r.content[0].text)
+          except Exception as e:
+              print(f'API FAILED ({type(e).__name__}): {e}')
+              raise
+          "
+
       - name: Run pipeline (fetch → scrape → summarize)
         env:
           ANTHROPIC_API_KEY: ${{ secrets.ANTHROPIC_API_KEY }}
         run: |
-          python -c "import os; key=os.environ.get('ANTHROPIC_API_KEY','MISSING'); print(f'API Key status: {key[:8]}...' if key!='MISSING' else 'API KEY IS MISSING')"
           PYTHONIOENCODING=utf-8 python pipeline.py
           echo "=== output 目录内容 ==="
           ls -la output/ || echo "output 目录不存在"

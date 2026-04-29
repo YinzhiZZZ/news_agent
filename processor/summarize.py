@@ -70,10 +70,10 @@ def summarize_article(article: dict) -> dict:
             break
         except Exception as e:
             if attempt < max_retries:
-                print(f"    [!] API 连接失败（第 {attempt} 次），5 秒后重试：{e}")
+                print(f"    [!] API 失败（第 {attempt} 次，{type(e).__name__}），5 秒后重试：{e}")
                 time.sleep(5)
             else:
-                print(f"    ✗ API 调用失败，已重试 {max_retries} 次：{e}")
+                print(f"    ✗ API 调用失败，已重试 {max_retries} 次（{type(e).__name__}）：{e}")
                 return None
 
     try:
