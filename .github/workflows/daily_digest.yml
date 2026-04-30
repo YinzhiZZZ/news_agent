@@ -69,4 +69,5 @@ jobs:
           # 只在文件有变化时才提交，避免空 commit
           git diff --cached --quiet || \
             git commit -m "chore: update daily digest $(date -u '+%Y-%m-%d')"
+          git pull --rebase origin main
           git push
